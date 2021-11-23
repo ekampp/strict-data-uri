@@ -16,7 +16,7 @@ module Strict
           # type = Regexp.last_match(1)
           encoder = Regexp.last_match(2)
           data = Regexp.last_match(3)
-          return Base64.decode64(data) if encoder == "base64"
+          return Base64.strict_decode64(data) if encoder == "base64"
         end
 
         raise "Illegal format error: #{uri.inspect}"
