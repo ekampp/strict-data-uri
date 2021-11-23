@@ -31,13 +31,13 @@ RSpec.describe Strict::Data::Uri do
     context "with invalid URI" do
       let(:encoded_string) { "abc" }
 
-      it { expect { decode }.to raise_error ArgumentError }
+      it { expect { decode }.to raise_error Strict::Data::Uri::InvalidDataUri }
     end
 
     context "with invalid encoder" do
       let(:encoded_string) { "data:text/plain;ivalid,SUQsT" }
 
-      it { expect { decode }.to raise_error ArgumentError }
+      it { expect { decode }.to raise_error Strict::Data::Uri::InvalidEncoder }
     end
   end
 end
