@@ -2,7 +2,7 @@
 
 This en- and decodes data URIs.
 
-This was inspired by [data-uri](https://rubygems.org/gems/data-uri).
+This was inspired by [data-uri](https://rubygems.org/gems/data-uri). The main difference being (a) more precise error handling and (b) using Ruby's `Base64.strict_encode64` instead of `Base64.encode64` which prevents the addition of newline (`\n`) characters every 60 characters in the encoded string.
 
 ## Installation
 
