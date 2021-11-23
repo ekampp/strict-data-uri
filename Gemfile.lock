@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    strict-data-uri (0.1.0)
+    strict-data-uri (0.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -58,4 +58,4 @@ DEPENDENCIES
   strict-data-uri!
 
 BUNDLED WITH
-   2.2.22
+   2.2.32
