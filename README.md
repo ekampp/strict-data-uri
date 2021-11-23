@@ -1,8 +1,8 @@
 # Strict::Data::Uri
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/strict/data/uri`. To experiment with that code, run `bin/console` for an interactive prompt.
+This en- and decodes data URIs.
 
-TODO: Delete this and the text above, and describe your gem
+This was inspired by [data-uri](https://rubygems.org/gems/data-uri).
 
 ## Installation
 
@@ -14,21 +14,33 @@ gem 'strict-data-uri'
 
 And then execute:
 
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install strict-data-uri
+```bash
+bundle install
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Encode a string into a data URI:
 
-## Development
+```ruby
+Strict::Data::Uri.encode "string"
+# => data:text/plain;base64,c3RyaW5n
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Decode a data URI:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+Strict::Data::Uri.decode "data:text/plain;base64,c3RyaW5n"
+# => string
+```
+
+## Testing
+
+To run the tests:
+
+```bash
+bundle exec rake
+```
 
 ## Contributing
 
