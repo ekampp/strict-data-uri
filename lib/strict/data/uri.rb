@@ -12,14 +12,15 @@ module Strict
       end
 
       def self.decode(uri)
-        if uri.match(/^data:(.*?);(.*?),(.*)$/)
-          # type = Regexp.last_match(1)
-          encoder = Regexp.last_match(2)
-          data = Regexp.last_match(3)
-          return Base64.strict_decode64(data) if encoder == "base64"
-        end
+        raise ArgumentError, "invalid data URI: #{uri.inspect}" unless uri.match(/^data:(.*?);(.*?),(.*)$/)
 
-        raise "Illegal format error: #{uri.inspect}"
+        encoder = Regexp.last_match(2)
+        data = Regexp.last_match(3)
+
+        case encoder
+        when "base64" then Base64.strict_decode64(data)
+        else raise ArgumentError, "missing or invalid encoder: #{encoder}"
+        end
       end
     end
   end

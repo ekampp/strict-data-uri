@@ -18,12 +18,26 @@ RSpec.describe Strict::Data::Uri do
   end
 
   describe ".encode" do
-    subject { described_class.encode decoded_string }
+    subject(:encode) { described_class.encode decoded_string }
+
     it { is_expected.to eql encoded_string }
   end
 
   describe ".decode" do
-    subject { described_class.decode encoded_string }
+    subject(:decode) { described_class.decode encoded_string }
+
     it { is_expected.to eql decoded_string }
+
+    context "with invalid URI" do
+      let(:encoded_string) { "abc" }
+
+      it { expect { decode }.to raise_error ArgumentError }
+    end
+
+    context "with invalid encoder" do
+      let(:encoded_string) { "data:text/plain;ivalid,SUQsT" }
+
+      it { expect { decode }.to raise_error ArgumentError }
+    end
   end
 end

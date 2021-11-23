@@ -1,3 +1,7 @@
+require:
+  - rubocop-rspec
+  - rubocop-rake
+
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.0
@@ -15,3 +19,7 @@ Layout/LineLength:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*_spec.rb"
